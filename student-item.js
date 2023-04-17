@@ -2,9 +2,12 @@ export default {
     props: ['id', 'image', 'name', 'isActive', 'birthYear', 'connections', 'completedCredits', 'activeSemesterCount' ],
 
     methods: {
-        deleteStudent() {
+        async deleteStudent() {
             this.$parent.students.splice(this.$parent.students.indexOf(this.$parent.students.find( s => s.id === this.id)), 1);
             // API hívás
+            // await fetch(`https://practiceapi.nikprog.hu/Student/${this.id}`, {
+            //     method: "delete",
+            // });
         }
     },
 
