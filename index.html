@@ -71,7 +71,7 @@
           async fetchData() {
             const url = 'https://practiceapi.nikprog.hu/Student';
             this.students = await (await fetch(url)).json();
-            this.students = this.students.map((student, index) => {return {index, ...student}});
+            console.log(this.students);
           }
         }
       }).mount("#app");
