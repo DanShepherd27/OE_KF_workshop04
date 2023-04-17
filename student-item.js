@@ -23,7 +23,7 @@ export default {
     },
 
     template: `
-    <tr
+    <tr class="m-3"
     >
         <td>{{ index }}</td>
         <td><img v-bind:src="image" style="width: 30px; height: 30px; border-radius: 30px;" class="border " v-bind:class="avatarBorder"></td>
@@ -37,6 +37,7 @@ export default {
         <td>
             <button
                 type="button"
+                class="btn btn-danger m-2"
                 @click="deleteStudent()"
             >
                 Delete
