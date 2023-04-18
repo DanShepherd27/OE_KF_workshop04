@@ -16,41 +16,39 @@
   <body>
     <h1>Student manager</h1>
     <div id="app">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Avatar</th>
-              <th scope="col">Name</th>
-              <th scope="col">Id</th>
-              <th scope="col">IsActive</th>
-              <th scope="col">BirthYear</th>
-              <th scope="col">Connections</th>
-              <th scope="col">CompletedCredits</th>
-              <th scope="col">ActiveSemesterCount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <student-item 
-              v-for="student in students"
-              v-bind:index="student.index"
-              v-bind:id="student.id"
-              v-bind:image="student.image"
-              v-bind:name="student.name"
-              v-bind:isActive="student.isActive"
-              v-bind:birthYear="student.birthYear"
-              v-bind:connections="student.connections"
-              v-bind:completedCredits="student.completedCredits"
-              v-bind:activeSemesterCount="student.activeSemesterCount"
-            >
-            </student-item>
-          </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Name</th>
+            <th scope="col">Id</th>
+            <th scope="col">IsActive</th>
+            <th scope="col">BirthYear</th>
+            <th scope="col">Connections</th>
+            <th scope="col">CompletedCredits</th>
+            <th scope="col">ActiveSemesterCount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <student-item
+            v-for="student in students"
+            :id="student.id"
+            :image="student.image"
+            :name="student.name"
+            :is-active="student.isActive"
+            :birth-year="student.birthYear"
+            :connections="student.connections"
+            :completed-credits="student.completedCredits"
+            :active-semester-count="student.activeSemesterCount"
+          >
+          </student-item>
+        </tbody>
+      </table>
     </div>
     <script type="module">
-
-      import StudentItem from "./student-item.js";
       const { createApp } = Vue;
+      import StudentItem from "./student-item.js";
 
       createApp({
         components: {
@@ -69,11 +67,11 @@
 
         methods: {
           async fetchData() {
-            const url = 'https://practiceapi.nikprog.hu/Student';
+            const url = "https://practiceapi.nikprog.hu/Student";
             this.students = await (await fetch(url)).json();
             console.log(this.students);
-          }
-        }
+          },
+        },
       }).mount("#app");
     </script>
   </body>
