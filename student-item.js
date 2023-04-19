@@ -35,13 +35,13 @@ export default {
   },
 
   template: `
-    <tr class="m-3"
+    <tr 
+      class="table-row m-3"
     >
         <td>{{ index }}</td>
         <td><img v-bind:src="image" style="width: 30px; height: 30px; border-radius: 30px;" class="border " :class="avatarBorder"></td>
         <td v-bind:class="nameColor" >{{ name }}</td>
         <td>{{ id }}</td>
-        <td>{{ isActive }}</td>
         <td>{{ birthYear }}</td>
         <td>{{ connections }}</td>
         <td>{{ completedCredits }}</td>

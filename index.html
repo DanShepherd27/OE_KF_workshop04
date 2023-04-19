@@ -10,12 +10,14 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link href="student.css" rel="stylesheet" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Student manager</title>
   </head>
   <body>
     <h1>Student manager</h1>
     <div id="app">
+      <student-update-form :student="selectedStudent"></student-update-form>
       <table class="table">
         <thead>
           <tr>
@@ -23,11 +25,11 @@
             <th scope="col">Avatar</th>
             <th scope="col">Name</th>
             <th scope="col">Id</th>
-            <th scope="col">IsActive</th>
             <th scope="col">BirthYear</th>
             <th scope="col">Connections</th>
             <th scope="col">CompletedCredits</th>
             <th scope="col">ActiveSemesterCount</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +43,7 @@
             :connections="student.connections"
             :completed-credits="student.completedCredits"
             :active-semester-count="student.activeSemesterCount"
+            @click="studentClickHandler(student)"
           >
           </student-item>
         </tbody>
@@ -49,15 +52,18 @@
     <script type="module">
       const { createApp } = Vue;
       import StudentItem from "./student-item.js";
+      import StudentUpdateForm from "./student-update-form.js";
 
       createApp({
         components: {
           StudentItem,
+          StudentUpdateForm,
         },
 
         data() {
           return {
             students: [],
+            selectedStudent: {},
           };
         },
 
@@ -70,6 +76,11 @@
             const url = "https://practiceapi.nikprog.hu/Student";
             this.students = await (await fetch(url)).json();
             console.log(this.students);
+          },
+
+          studentClickHandler(student) {
+            console.log(student);
+            this.selectedStudent = student;
           },
         },
       }).mount("#app");
