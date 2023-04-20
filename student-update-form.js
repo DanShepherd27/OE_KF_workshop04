@@ -16,7 +16,15 @@ export default {
         ...this.tempStudent,
       };
       console.log(this.$parent.students[this.index]);
+
       // API hívás
+      await fetch("https://practiceapi.nikprog.hu/Student", {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(this.$parent.students[this.index]),
+      });
     },
   },
 
