@@ -22,8 +22,6 @@ export default {
         },
         body: JSON.stringify(this.$parent.students[this.index]),
       });
-
-      tempStudent = {};
     },
   },
 
