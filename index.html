@@ -15,50 +15,22 @@
     <title>Student manager</title>
   </head>
   <body>
-    <h1>Student manager</h1>
+    <h1 class="m-3">Student manager</h1>
     <div id="app">
       <student-create-form></student-create-form>
       <student-update-form :student="selectedStudent"></student-update-form>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Avatar</th>
-            <th scope="col">Name</th>
-            <th scope="col">Id</th>
-            <th scope="col">BirthYear</th>
-            <th scope="col">Connections</th>
-            <th scope="col">CompletedCredits</th>
-            <th scope="col">ActiveSemesterCount</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <student-item
-            v-for="student in students"
-            :id="student.id"
-            :image="student.image"
-            :name="student.name"
-            :is-active="student.isActive"
-            :birth-year="student.birthYear"
-            :connections="student.connections"
-            :completed-credits="student.completedCredits"
-            :active-semester-count="student.activeSemesterCount"
-            @click="studentClickHandler(student)"
-          >
-          </student-item>
-        </tbody>
-      </table>
+      <student-table :students="students"></student-table>
     </div>
     <script type="module">
       const { createApp } = Vue;
-      import StudentItem from "./student-item.js";
-      import StudentUpdateForm from "./student-update-form.js";
+
       import StudentCreateForm from "./student-create-form.js";
+      import StudentUpdateForm from "./student-update-form.js";
+      import StudentTable from "./student-table.js";
 
       createApp({
         components: {
-          StudentItem,
+          StudentTable,
           StudentUpdateForm,
           StudentCreateForm,
         },
@@ -79,11 +51,6 @@
             const url = "https://practiceapi.nikprog.hu/Student";
             this.students = await (await fetch(url)).json();
             console.log(this.students);
-          },
-
-          studentClickHandler(student) {
-            console.log(student);
-            this.selectedStudent = student;
           },
         },
       }).mount("#app");
