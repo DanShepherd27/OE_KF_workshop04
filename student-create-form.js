@@ -45,7 +45,6 @@ export default {
 /*
 
 {
-    "id": "e9e8211a-20c2-4467-bf6b-e2b0fe0b09ff",
     "name": "JD - Gipsz Jakab",
     "isActive": true,
     "birthYear": 2000,

@@ -4,7 +4,6 @@ export default {
   props: ["students"],
   methods: {
     studentClickHandler(student) {
-      console.log(student);
       this.$parent.selectedStudent = student;
     },
   },
