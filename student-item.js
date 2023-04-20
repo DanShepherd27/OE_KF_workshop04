@@ -14,9 +14,9 @@ export default {
     async deleteStudent() {
       this.$parent.students.splice(this.index, 1);
       // API hívás
-      // await fetch(`https://practiceapi.nikprog.hu/Student/${this.id}`, {
-      //     method: "delete",
-      // });
+      await fetch(`https://practiceapi.nikprog.hu/Student/${this.id}`, {
+        method: "delete",
+      });
     },
   },
 
