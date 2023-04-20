@@ -9,13 +9,10 @@ export default {
 
   methods: {
     async updateStudent() {
-      console.log(this.tempStudent);
-
       this.$parent.students[this.index] = {
         ...this.student,
         ...this.tempStudent,
       };
-      console.log(this.$parent.students[this.index]);
 
       // API hívás
       await fetch("https://practiceapi.nikprog.hu/Student", {
@@ -25,6 +22,8 @@ export default {
         },
         body: JSON.stringify(this.$parent.students[this.index]),
       });
+
+      tempStudent = {};
     },
   },
 
